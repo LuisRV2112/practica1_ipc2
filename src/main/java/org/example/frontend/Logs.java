@@ -38,8 +38,6 @@ public class Logs extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Logs de instrucciones");
 
-        contenido.setText("jLabel2");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

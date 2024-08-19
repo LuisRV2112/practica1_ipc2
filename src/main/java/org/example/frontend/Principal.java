@@ -74,7 +74,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(entradaArchivo);
 
-        pruebamenu.setText("prueba ");
+        pruebamenu.setText("Tablas de solicitudes");
         pruebamenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pruebamenuActionPerformed(evt);
@@ -160,7 +160,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_pruebamenuActionPerformed
 
     private void nuevaSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaSolicitudMenuActionPerformed
-        // Estamos aqui
+        // boton nueva solicitud
         SolicitudesFormulario formulario = new SolicitudesFormulario(solicitudesControlador);
         formulario.setVisible(true);
     }//GEN-LAST:event_nuevaSolicitudMenuActionPerformed
