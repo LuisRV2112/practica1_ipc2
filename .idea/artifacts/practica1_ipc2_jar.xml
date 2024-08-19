@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="practica1_ipc2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/practica1_ipc2_jar</output-path>
+    <root id="archive" name="practica1_ipc2.jar">
+      <element id="module-output" name="practica1_ipc2" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/mysql/mysql-connector-j/9.0.0/mysql-connector-j-9.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/4.26.1/protobuf-java-4.26.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

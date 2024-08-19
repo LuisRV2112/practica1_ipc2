@@ -10,9 +10,10 @@ import org.example.modelos.Solicitud;
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.List;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
+import java.util.Date;
 
 /**
  *
@@ -21,12 +22,16 @@ import java.util.Scanner;
 public class Principal extends javax.swing.JFrame {
 
     private final SolicitudesControlador solicitudesControlador;
+    private final Logs logsVentana;
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
-        solicitudesControlador = new SolicitudesControlador();
+        solicitudesControlador = new SolicitudesControlador(this);
+        logsVentana = new Logs();
+        contenedorPrincipal.add(logsVentana);
+        logsVentana.setVisible(true);
     }
 
     /**
@@ -43,6 +48,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         entradaArchivo = new javax.swing.JMenuItem();
         pruebamenu = new javax.swing.JMenuItem();
+        nuevaSolicitudMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,13 +74,21 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(entradaArchivo);
 
-        pruebamenu.setText("prueba ");
+        pruebamenu.setText("Tablas de solicitudes");
         pruebamenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pruebamenuActionPerformed(evt);
             }
         });
         jMenu1.add(pruebamenu);
+
+        nuevaSolicitudMenu.setText("Nueva Solicitud");
+        nuevaSolicitudMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevaSolicitudMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(nuevaSolicitudMenu);
 
         jMenuBar1.add(jMenu1);
 
@@ -99,6 +113,24 @@ public class Principal extends javax.swing.JFrame {
 
     private void entradaArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaArchivoActionPerformed
         JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        JFileChooser logFileChooser = new JFileChooser();
+        logFileChooser.setDialogTitle("Guardar archivo de log");
+        logFileChooser.setSelectedFile(new java.io.File("log.txt"));
+        int resultLog = logFileChooser.showSaveDialog(this);
+        if (resultLog != JFileChooser.APPROVE_OPTION) {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado un archivo de log");
+            return;
+        }
+        File logSeleccionado = logFileChooser.getSelectedFile();
+        try {
+            FileWriter fileWriter = new FileWriter(logSeleccionado);
+            fileWriter.write("Archivo de log\n" + new Date().toString() + "\n");
+            fileWriter.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se ha podido crear el archivo de log"+e.getMessage());
+            return;
+        }
+
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
@@ -110,12 +142,9 @@ public class Principal extends javax.swing.JFrame {
                     int startIndex = input.indexOf('(');
                     int endIndex = input.lastIndexOf(')');
 
-                    // Check if both parentheses are found
                     if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
-                        // Extract the substring between the parentheses
                         Solicitud solicitud = new Solicitud(input.substring(startIndex + 1, endIndex).split(","));
                         solicitudesControlador.crearSolicitud(solicitud);
-//                        System.out.println(Arrays.toString(input.substring(startIndex + 1, endIndex).split(",")));
                     }
                 }
             } catch (FileNotFoundException fe){}
@@ -130,12 +159,23 @@ public class Principal extends javax.swing.JFrame {
         ventana.setVisible(true);
     }//GEN-LAST:event_pruebamenuActionPerformed
 
+    private void nuevaSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaSolicitudMenuActionPerformed
+        // boton nueva solicitud
+        SolicitudesFormulario formulario = new SolicitudesFormulario(solicitudesControlador);
+        formulario.setVisible(true);
+    }//GEN-LAST:event_nuevaSolicitudMenuActionPerformed
+
+    public Logs getLogsVentana() {
+        return logsVentana;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane contenedorPrincipal;
     private javax.swing.JMenuItem entradaArchivo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem nuevaSolicitudMenu;
     private javax.swing.JMenuItem pruebamenu;
     // End of variables declaration//GEN-END:variables
 }

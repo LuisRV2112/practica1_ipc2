@@ -19,10 +19,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="pruebamenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="prueba "/>
+                <Property name="text" type="java.lang.String" value="Tablas de solicitudes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pruebamenuActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="nuevaSolicitudMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nueva Solicitud"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevaSolicitudMenuActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
