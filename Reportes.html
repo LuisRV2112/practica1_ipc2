@@ -1,0 +1,21 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class GeneradorReporteHTML {
+
+    public void generarReporteTarjeta(Tarjeta tarjeta, String path) {
+        try (FileWriter writer = new FileWriter(path)) {
+            writer.write("<html><body>");
+            writer.write("<h1>Reporte de Tarjeta</h1>");
+            writer.write("<p>Número de Tarjeta: " + tarjeta.getNumero() + "</p>");
+            writer.write("<p>Tipo: " + tarjeta.getTipo() + "</p>");
+            writer.write("<p>Límite: " + tarjeta.getLimite() + "</p>");
+            writer.write("<p>Nombre Cliente: " + tarjeta.getNombreCliente() + "</p>");
+            writer.write("<p>Dirección Cliente: " + tarjeta.getDireccionCliente() + "</p>");
+            writer.write("<p>Estado: " + tarjeta.getEstado() + "</p>");
+            writer.write("</body></html>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

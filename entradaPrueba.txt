@@ -1,4 +1,4 @@
-SOLICITUD(456,"15/07/2024",NACIONAL,"José Moisés Granados",10500.00,"5ta calle 25-7 zona 1");
-SOLICITUD(322,"01/07/2024",INTERNACIONAL,"Roberto Bautista",999.00,"90ta calle 25-7 zona 1");
-SOLICITUD(113,"24/07/2024",NACIONAL,"Alejandro XD",23.00,"7ta calle 25-7 zona 1");
-SOLICITUD(114,"09/07/2024",NACIONAL,"Luis Regaldo",56.00,"34ta calle 25-7 zona 1");
+SOLICITUD(2,"15/07/2024",NACIONAL,"José Moisés Granados",10500.00,"5ta calle 25-7 zona 1");
+SOLICITUD(3,"01/07/2024",INTERNACIONAL,"Roberto Bautista",999.00,"90ta calle 25-7 zona 1");
+SOLICITUD(4,"24/07/2024",NACIONAL,"Alejandro XD",23.00,"7ta calle 25-7 zona 1");
+SOLICITUD(5,"09/07/2024",NACIONAL,"Luis Regaldo",56.00,"34ta calle 25-7 zona 1");

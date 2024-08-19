@@ -1,6 +1,7 @@
 package org.example.controladores;
 
 import org.example.modelos.Solicitud;
+import org.example.frontend.Principal;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -14,10 +15,12 @@ import java.util.List;
 
 public class SolicitudesControlador {
     private final Connection connection;
+    private final Principal principalFrame;
 
-    public SolicitudesControlador() {
+    public SolicitudesControlador(Principal principalFrame) {
         ConexionDb conexionDb = new ConexionDb();
         connection = conexionDb.getConnection();
+        this.principalFrame = principalFrame;
     }
 
     public void crearSolicitud(Solicitud solicitud) {
@@ -35,6 +38,8 @@ public class SolicitudesControlador {
             consulta.executeUpdate();
             Date endTime = new Date();
             int msElapsedTime = (int) (endTime.getTime() - startTime.getTime());
+            System.out.println("Tiempo de ejecución: " + msElapsedTime + "ms");
+            principalFrame.getLogsVentana().agregarAccion("Solicitud creada: " + solicitud.getNumero() + "de" + solicitud.getNombre() + " en " + msElapsedTime + "ms");
 
         } catch (SQLException se){
             JOptionPane.showMessageDialog(null,"No se pudo crear la solicitud, detalles: "+se.getLocalizedMessage(),"Error",JOptionPane.ERROR_MESSAGE);
